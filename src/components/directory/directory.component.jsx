@@ -10,31 +10,36 @@ class Directory extends React.Component{
          
             sections:[
                 {
+                    id:1,
                     title:"HOODIES",
-                    imageUrl:"https://i.ibb.co/cvpntL1/hats.png",
-                    id:1
+                    imageUrl:"https://i.ibb.co/Dfm8GyN/hoodies.png",
+                    linkUrl:"profile"
+                    
                 },
-                {
-                    title:"JACKETS",
-                    imageUrl:"https://i.ibb.co/px2tCc3/jackets.png",
-                    id:2
-                },
-                {
+                {   id:2,
                     title:"JEANS",
-                    imageUrl:"https://i.ibb.co/0jqHpnp/sneakers.png",
-                    id:3
+                    imageUrl:"https://i.ibb.co/KVLpg8y/jeans.png",
+                    linkUrl:""
                 },
                 {
+                    id:3,
+                    title:"SHOES",
+                    imageUrl:"https://i.ibb.co/0jkbnby/shoes.png",
+                    linkUrl:""
+                },
+                {
+                    id:4,
                     title:"MENS",
-                    imageUrl:"https://i.ibb.co/R70vBrQ/men.png",
+                    imageUrl:"https://i.ibb.co/k0PYHmB/mens.png",
                     size:'large',
-                    id:4
+                    linkUrl:""
                 },
                 {
+                    id:5,
                     title:"WOMENS",
-                    imageUrl:"https://i.ibb.co/GCCdy8t/womens.png",
+                    imageUrl:"https://i.ibb.co/gPFkfXb/womens.png",
                     size:'large',
-                    id:5
+                    
                 }
             ]
         }
@@ -46,8 +51,8 @@ class Directory extends React.Component{
 
         return(
             <div className="directory-menu">
-                {this.state.sections.map(({title,imageUrl,id,size})=>( //Maps the section array and passes it to the MenuItem Component
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+                {this.state.sections.map(({id, ...otherSectionProps})=>( //Maps the section array and passes it to the MenuItem Component
+                    <MenuItem key={id} {...otherSectionProps} />
                 ))}
             </div>    
         )
