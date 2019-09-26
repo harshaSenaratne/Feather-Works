@@ -40,9 +40,11 @@ this.setState({
         <form onSubmit={this.handleSubmit}>
             <FormInput name="email" type="email"
               onChange={this.handleChange}
-             value={this.state.email} required/> 
+             value={this.state.email}
+             lable='email' required/> 
            <label>Email</label>
            <FormInput name="password" 
+           lable='email'
            handleChange={this.handleChange}
            type="password" value={this.state.password} required/> 
            <label>Password</label>
