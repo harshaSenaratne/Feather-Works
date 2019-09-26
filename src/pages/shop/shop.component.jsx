@@ -15,7 +15,7 @@ import SHOPDATA from './shop.data'
     render() {
         const {collections} = this.state;
         return (
-            <div className="shop-page">
+            <div className='shop-page'>
               {
                   collections.map(({id, ...collectionsprops}) => (
                    <PreviewShop key={id} {...collectionsprops}/>

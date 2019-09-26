@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ShopItem from '../shop-item/shop.item.component'
 import './preview.shop.component.styles.scss'
 
 const ShopPreview =({title,preview})=>(
@@ -9,10 +10,8 @@ const ShopPreview =({title,preview})=>(
 
  {/* Maps and renders preview component data by filtering data to be less than 4   */}
      
-     {preview.filter((preview,index) => index< 4).map(item=>(
-       <div key={item.id}> 
-       {item.name}
-       </div>
+     {preview.filter((preview,index) => index< 4).map(({id, ...previewProps})=>(
+      <ShopItem  key={id} {...previewProps}/>
      ))
 
      }

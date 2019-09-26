@@ -2,3 +2,9 @@
 body{ 
  font-family: "Satisfy";
 }
+
+/* Anything with a tag will apply these styles */
+a{
+  text-decoration: none;
+  color: black  
+}
