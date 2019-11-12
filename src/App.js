@@ -5,7 +5,7 @@ import Homepage from './pages/homepage/homepage.component'
 import Shop from './pages/shop/shop.component'
 import Header from '../src/components/header/header.component'
 import SignInSignUp from './pages/signin-signup-page/signin.signup.component'
-import {auth} from './firebase/firebase.utils'
+import {auth,createUserProfileDocument} from './firebase/firebase.utils'
 import { from } from 'rxjs';
 class App extends React.Component {
  constructor(){
@@ -19,13 +19,25 @@ class App extends React.Component {
 
  componentDidMount(){
    //Listens authentication state changes in the backend 
- this.unsubscribeFromAuth = auth.onAuthStateChanged(user=>{
-   this.setState({
-     currentUser:user
-   });
+ this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth=>{
+   if(userAuth){
+   const userRef= await createUserProfileDocument(userAuth);
+   userRef.onSnapshot(snapshot=>{
 
-   console.log(user);
- })
+    this.setState({
+      currentUser:{
+        id:snapshot.id,
+        ...snapshot.data()
+      }
+    },()=>{
+      console.log(this.state); 
+    })
+   })
+ 
+   }
+   this.setState({currentUser:userAuth});
+ });
+
  }
 
  componentWillUnmount(){
