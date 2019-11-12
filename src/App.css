@@ -1,6 +1,8 @@
 /*  Rule: Everything in the body tag uses the following */
 body{ 
  font-family: "Satisfy";
+ padding: 20px 60px;
+
 }
 
 /* Anything with a tag will apply these styles */
