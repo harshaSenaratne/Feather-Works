@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {auth} from '../../firebase/firebase.utils';
+import {connect} from 'react-redux'; 
 import {ReactComponent as Logo} from '../../assets/hanger.svg'
 import './header.styles.scss'
 
@@ -35,4 +36,8 @@ const Header =({currentUser})=>(
    
 )
 
-export default Header;
+const mapStateToProps= state =>({ //State is the root reducer, from there we are accessing the currentUser inside the user.reducer 
+currentUser:state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
